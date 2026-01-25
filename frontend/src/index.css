@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+}
+
+body {
+  /* @apply is not needed for simple body styles if we just use classes or standard CSS. 
+     However, keeping it consistent with v4 usage if sticking to standard css imports. 
+     If using v4, @tailwind directives are replaced by @import "tailwindcss"; 
+  */
+  @apply bg-gray-50 text-gray-900;
+  font-family: 'Inter', sans-serif;
+}
