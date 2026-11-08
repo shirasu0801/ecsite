@@ -9,8 +9,10 @@ import os
 from . import schemas, database, models
 
 # Setup
-# Ideally load these from .env
-SECRET_KEY = "CHANGE_ME_IN_PRODUCTION_SECRET_KEY"
+# SECRET_KEY は環境変数から読み込む。未設定または既知のプレースホルダ値の場合は起動しない。
+SECRET_KEY = os.environ.get("SECRET_KEY")
+if not SECRET_KEY or SECRET_KEY == "CHANGE_ME_IN_PRODUCTION_SECRET_KEY":
+    raise RuntimeError("SECRET_KEY environment variable must be set to a strong random value")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
